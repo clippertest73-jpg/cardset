@@ -969,6 +969,163 @@ footer p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-t
 
 /* Page transition */
 .page { animation: fadeUp 0.4s ease both; }
+
+/* ======= MOBILE NAV HAMBURGER ======= */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(3,4,10,0.98);
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+  padding: 24px 24px 32px;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-dim);
+  transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ======= MOBILE RESPONSIVE ======= */
+@media (max-width: 768px) {
+
+  /* Nav */
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* Hero */
+  .hero { padding: 60px 24px 48px; }
+  .hero h1 { font-size: 52px; }
+  .hero-desc { font-size: 16px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 16px 24px; }
+
+  /* Stats bar */
+  .stats-bar {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 48px;
+  }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+  .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+
+  /* Rarity showcase */
+  .rarity-showcase { padding: 0 24px 48px; }
+  .rarity-tiers { grid-template-columns: 1fr; gap: 2px; }
+  .rarity-tier { display: flex; align-items: center; gap: 16px; text-align: left; padding: 18px 20px; }
+  .tier-dot { margin: 0; flex-shrink: 0; }
+  .tier-name { margin-bottom: 0; width: 90px; flex-shrink: 0; }
+  .tier-count { margin-bottom: 0; width: 80px; flex-shrink: 0; font-size: 11px; }
+  .tier-style { font-size: 13px; }
+
+  /* Factions teaser */
+  .factions-teaser { padding: 0 24px 48px; }
+  .faction-grid { grid-template-columns: 1fr; }
+
+  /* Pull quote */
+  .pull-quote { margin: 0 24px 48px; padding: 32px 24px; }
+  .pull-quote blockquote { font-size: 18px; }
+  .pull-quote::before { font-size: 80px; top: -10px; left: 16px; }
+
+  /* Section divider */
+  .section-divider { padding: 0 24px; }
+
+  /* Shop header */
+  .shop-header { padding: 40px 24px 0; }
+  .shop-header h1 { font-size: 32px; }
+  .shop-filter { padding: 10px 14px; font-size: 9px; }
+
+  /* Shop grid + product card */
+  .shop-grid { padding: 0 0 48px; }
+  .product-card.featured {
+    grid-template-columns: 1fr;
+  }
+  .product-img-area { min-height: 280px; padding: 32px 24px 20px; }
+  .product-img-area img { max-height: 220px; }
+  .product-thumbs { gap: 6px; }
+  .product-thumb { width: 44px; height: 44px; }
+  .product-info { padding: 28px 24px 36px; }
+  .product-info h2 { font-size: 26px; }
+  .product-specs { grid-template-columns: repeat(3, 1fr); }
+  .price { font-size: 36px; }
+  .notify-form { flex-direction: column; }
+  .notify-input { border-right: 1px solid var(--border); border-bottom: none; }
+  .notify-btn { padding: 14px; }
+
+  /* Info sections */
+  .info-section { padding: 48px 24px; }
+  .info-section h2 { font-size: 26px; }
+
+  /* Series timeline */
+  .series-timeline { grid-template-columns: 1fr; }
+
+  /* Factions detail */
+  .factions-detail { grid-template-columns: 1fr; }
+
+  /* Horror grid (inline style grids) */
+  .horror-grid-2col { grid-template-columns: 1fr !important; }
+
+  /* About grid */
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Footer */
+  footer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 16px 24px;
+  }
+
+  /* Toast */
+  .toast { bottom: 16px; right: 16px; left: 16px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 42px; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; }
+  .stat-num { font-size: 28px; }
+  .product-specs { grid-template-columns: 1fr 1fr; }
+  .spec:last-child { grid-column: 1 / -1; }
+}
 </style>
 </head>
 <body>
@@ -985,7 +1142,16 @@ footer p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-t
     <a onclick="showPage('about')" id="nav-about">About</a>
   </div>
   <button class="nav-cta" onclick="showPage('shop')">View Releases</button>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="navTo('home')">Home</a>
+  <a onclick="navTo('shop')">Shop</a>
+  <a onclick="navTo('lore')">The Universe</a>
+  <a onclick="navTo('about')">About</a>
+</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast">✓ You're on the list. We'll be in touch.</div>
@@ -1300,7 +1466,7 @@ footer p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-t
   <div class="info-section">
     <h2>The Horror Layer</h2>
     <p>The cosmic horror in Signals from the Void is never explicit. It operates at the edges.</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap: 2px; margin-top: 40px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap: 2px; margin-top: 40px;" class="horror-grid-2col">
       <div style="background:var(--deep); padding: 32px 28px; border-left: 2px solid #534AB7;">
         <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px;">Rule 01</div>
         <p style="font-size: 16px; color: var(--text-dim); line-height: 1.7; font-style: italic;">The Void entities are never fully depicted on any card. Only glimpsed, implied, or reflected in the faces of those who have seen them. The horror is in the reaction, not the subject.</p>
@@ -1431,6 +1597,19 @@ function showPage(name) {
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
   window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+
+function navTo(name) {
+  showPage(name);
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
 }
 
 
